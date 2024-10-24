@@ -259,7 +259,7 @@ def parse_cli_args(args) -> dict:
         required=False,
     )
     parser_deploy.add_argument(
-        "--version_number_validation_regex",
+        "--version-number-validation-regex",
         type=str,
         help="If supplied, version numbers will be validated with this regular expression.",
         required=False,
@@ -303,12 +303,5 @@ def parse_cli_args(args) -> dict:
         config_vars = parsed_kwargs.pop("vars")
         if config_vars is not None:
             parsed_kwargs["config_vars"] = config_vars
-
-    # TODO: This needs to be more complex
-    if "verbose" in parsed_kwargs:
-        parsed_kwargs["log_level"] = (
-            logging.DEBUG if parsed_kwargs["verbose"] else logging.INFO
-        )
-        parsed_kwargs.pop("verbose")
 
     return {k: v for k, v in parsed_kwargs.items() if v is not None}

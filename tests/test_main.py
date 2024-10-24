@@ -103,6 +103,24 @@ deploy_only_required = pytest.param(
     id="deploy: only required",
 )
 
+deploy_log_level_warning = pytest.param(
+    "schemachange.cli.deploy",
+    {"SNOWFLAKE_PASSWORD": "password"},
+    ["schemachange", "deploy", *required_args, "--log-level", "WARNING"],
+    {**default_deploy_config, **required_config, "log_level": logging.WARNING},
+    None,
+    id="deploy: log level warning",
+)
+
+deploy_log_level_error = pytest.param(
+    "schemachange.cli.deploy",
+    {"SNOWFLAKE_PASSWORD": "password"},
+    ["schemachange", "deploy", *required_args, "--log-level", "ERROR"],
+    {**default_deploy_config, **required_config, "log_level": logging.ERROR},
+    None,
+    id="deploy: log level warning",
+)
+
 deploy_all_cli_arg_names = pytest.param(
     "schemachange.cli.deploy",
     {},
@@ -510,6 +528,8 @@ render_all_cli_arg_names = pytest.param(
     [
         no_command,
         deploy_only_required,
+        deploy_log_level_warning,
+        deploy_log_level_error,
         deploy_all_cli_arg_names,
         deploy_all_cli_arg_flags,
         deploy_all_env_all_cli,

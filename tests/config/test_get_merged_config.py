@@ -751,7 +751,7 @@ param_full_yaml_and_connection_and_cli_and_env = pytest.param(
         "query-tag-from-cli",
         "--oauth-config",
         json.dumps({"oauth_config_variable": "cli_oauth_config_value"}),
-        "--version_number_validation_regex",
+        "--version-number-validation-regex",
         "version_number_validation_regex-from-cli",
         "--raise-exception-on-ignored-versioned-script",
     ],
@@ -786,6 +786,8 @@ param_full_yaml_and_connection_and_cli_and_env = pytest.param(
         "connection_name": "myaltconnection",
         "connections_file_path": assets_path / "alt-connections.toml",
         "snowflake_password": "env_snowflake_password",
+        "version_number_validation_regex": "version_number_validation_regex-from-cli",
+        "raise_exception_on_ignored_versioned_script": True,
     },
     id="Deploy: full yaml, connections.toml, cli, and env",
 )
