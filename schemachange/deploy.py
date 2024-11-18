@@ -100,7 +100,7 @@ def deploy(config: DeployConfig, session: SnowflakeSession):
         # Apply a versioned-change script only if the version is newer than the most recent change in the database
         # Apply any other scripts, i.e. repeatable scripts, irrespective of the most recent change in the database
         if script.type == "V":
-            script_metadata = versioned_scripts.get(script.name)
+            script_metadata = versioned_scripts.get(script.name) if versioned_scripts is not None else None
 
             if (
                 max_published_version is not None
