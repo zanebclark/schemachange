@@ -562,6 +562,9 @@ param_full_yaml_and_connection_and_cli_and_env = pytest.param(
         "--dry-run",
         "--query-tag",
         "query-tag-from-cli",
+        "--version-number-validation-regex",
+        "version_number_validation_regex-from-cli",
+        "--raise-exception-on-ignored-versioned-script",
     ],
     {  # expected
         "subcommand": "deploy",
